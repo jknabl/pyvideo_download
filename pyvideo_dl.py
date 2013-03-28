@@ -7,8 +7,8 @@ import re
 # e.g. /Users/me/Documents/videos/
 #
 # Leave blank to download to wherever you run this script from
-DL_PATH = "/Users/jasonknabl/Documents/pycon-canada-2012/"
-PYVIDEO_URL = "http://pyvideo.org/category/25/pycon-ca-2012/files"
+DL_PATH = "/Users/jasonknabl/Documents/pycon-us-2011/"
+PYVIDEO_URL = "http://pyvideo.org/category/7/pycon-us-2011/files"
 # Begin logic
 
 f = requests.get(PYVIDEO_URL)
@@ -18,7 +18,9 @@ item_list = {}
 #get links, make a dict.
 for td in XMLItems:
     if td.cssselect("a"):
-        item_list[curr_title] = td.cssselect('a')[0].attrib['href']
+        for a in td.cssselect('a'):
+            if a.text_content() == "video/mp4":
+                item_list[curr_title] = a.attrib['href']
     else:
         curr_title = re.sub(r'\W+', '', td.text_content())
         curr_title = curr_title.encode('ascii', 'ignore')
