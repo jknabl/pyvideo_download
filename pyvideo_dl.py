@@ -7,7 +7,7 @@ import re
 # e.g. /Users/me/Documents/videos/
 #
 # Leave blank to download to wherever you run this script from
-DL_PATH = "/Users/jasonknabl/Documents/pycon-us-2011/"
+DL_PATH = ""
 PYVIDEO_URL = "http://pyvideo.org/category/7/pycon-us-2011/files"
 
 def get_links(url):
