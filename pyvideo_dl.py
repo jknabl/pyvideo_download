@@ -5,14 +5,14 @@ import os
 import re
 # Set the (EXISTING) path where you want the videos downloaded
 # e.g. /Users/me/Documents/videos/
-#
+#im
 # Leave blank to download to wherever you run this script from
 DL_PATH = ""
 PYVIDEO_URL = "http://pyvideo.org/category/7/pycon-us-2011/files"
 
 def get_links(url):
     """Scrape a bunch of links from the given pyvideo url."""
-    req_result = requests.get(PYVIDEO_URL)
+    req_result = requests.get(url)
     parsed = lxml.html.document_fromstring(req_result.content)
     elements = parsed.cssselect("table.table td")
     item_list = {}
