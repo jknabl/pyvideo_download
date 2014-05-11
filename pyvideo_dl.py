@@ -11,7 +11,9 @@ DL_PATH = ""
 PYVIDEO_URL = "http://pyvideo.org/category/7/pycon-us-2011/files"
 
 def get_links(url):
-    """Scrape a bunch of links from the given pyvideo url."""
+    """Scrape a bunch of links from the given pyvideo url.
+
+    """
     req_result = requests.get(url)
     parsed = lxml.html.document_fromstring(req_result.content)
     elements = parsed.cssselect("table.table td")
@@ -30,6 +32,9 @@ def get_links(url):
     return item_list
 
 def download_video(title, url):
+    """Given a video title and a URL, download a video to the filesystem.
+
+    """
     new_path = DL_PATH + title
     if os.path.exists("%s.mp4" % new_path):
         print "Already downloaded %s.mp4. Skipping...\n---\n" % new_path
